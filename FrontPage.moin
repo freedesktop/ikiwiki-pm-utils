@@ -1,0 +1,14 @@
+##master-page:FrontPage
+#format wiki
+#language en
+#pragma section-numbers off
+= Power Management Utilities =
+
+This wiki is about pm-utils, here is a list about useful resources:
+
+ * [http://webcvs.freedesktop.org/pm-utils/pm-utils/ Web Interface to CVS repository]
+ * [http://lists.freedesktop.org/mailman/listinfo/pm-utils Mailing List]
+ * [http://people.freedesktop.org/~hughsient/quirk/quirk-suspend-index.html HAL Suspend Quirks]
+ * [http://en.opensuse.org/Pm-utils Open Suse wiki about pm-utils]
+ * [https://bugs.freedesktop.org Freedesktop Bugzilla (select pm-utils as component)]
+ 
