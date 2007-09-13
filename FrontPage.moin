@@ -17,7 +17,7 @@ This wiki is about pm-utils, here is a list about useful resources:
  * [http://cvs.fedoraproject.org/repo/pkgs/pm-utils/pm-utils-0.99.4.tar.gz/a88503876f63c96b55784be91b6458d2/pm-utils-0.99.4.tar.gz pm-utils-0.99.4.tar.gz] (md5sum: 
  a88503876f63c96b55784be91b6458d2)
  * Please apply [http://cvs.fedora.redhat.com/viewcvs/*checkout*/devel/pm-utils/pm-utils-0.99.3-cfg.patch this patch] after download, when you unpacked it.
-== rough changelog since 0.99.3 ( a full changelog is included in the tarball) ==
+== rough changelog since 0.99.3 ==
  * pm/power.d/laptop-tools:
   * remove this entirely, it doesn't make any sense.
  * pm/hooks/99video src/pm-action:
@@ -26,3 +26,4 @@ This wiki is about pm-utils, here is a list about useful resources:
   * We are not turning off the DAC and light in 20video, but we are turning it on in 99video. Fix.
  * pm/functions:
   * export config variables from pm/functions as well (patch from Stefan)
+[http://webcvs.freedesktop.org/pm-utils/pm-utils/ChangeLog?revision=1.83&view=markup full changelog]
