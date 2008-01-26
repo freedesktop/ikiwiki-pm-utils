@@ -6,12 +6,18 @@
 
 This wiki is about pm-utils, here is a list about useful resources:
 
- * [http://webcvs.freedesktop.org/pm-utils/pm-utils/ Web Interface to the CVS repository]
- * [http://www.freedesktop.org/wiki/UsingCvs Use the CVS repository]
+ * [http://gitweb.freedesktop.org/?p=pm-utils.git;a=summary Web Interface to the git repository]
  * [http://lists.freedesktop.org/mailman/listinfo/pm-utils Mailing List]
  * [http://people.freedesktop.org/~hughsient/quirk/quirk-suspend-index.html HAL Suspend Quirks]
  * [http://en.opensuse.org/Pm-utils Open Suse wiki about pm-utils]
  * [https://bugs.freedesktop.org Freedesktop Bugzilla (select pm-utils as product)]
+
+= Downloading pm-utils =
+
+pm-utils now uses git. For anonymous access please do:
+{{{
+git clone git://anongit.freedesktop.org/git/pm-utils
+}}}
 
 = latest release =
  * [http://cvs.fedoraproject.org/repo/pkgs/pm-utils/pm-utils-0.99.4.tar.gz/a88503876f63c96b55784be91b6458d2/pm-utils-0.99.4.tar.gz pm-utils-0.99.4.tar.gz] (md5sum: 
