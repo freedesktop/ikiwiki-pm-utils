@@ -19,9 +19,15 @@ pm-utils now uses git. For anonymous access please do:
 git clone git://anongit.freedesktop.org/git/pm-utils
 }}}
 
+== development changes ==
+ * pm-utils is POSIX compliant.
+ * pm-utils has been refactored to make it more modular in how it handles hooks and sleep methods.
+ * pm-utils includes basic support for tuxonice and uswsusp.
+ * Full changelog at http://cgit.freedesktop.org/pm-utils/log/
+
 = latest release =
  * [http://cvs.fedoraproject.org/repo/pkgs/pm-utils/pm-utils-0.99.4.tar.gz/a88503876f63c96b55784be91b6458d2/pm-utils-0.99.4.tar.gz pm-utils-0.99.4.tar.gz] (md5sum: 
- a88503876f63c96b55784be91b6458d2)
+ a88503876f63c96b55784be91b6458d2
  * Please apply [http://cvs.fedora.redhat.com/viewcvs/*checkout*/devel/pm-utils/pm-utils-0.99.3-cfg.patch this patch] after download, when you unpacked it.
 == rough changelog since 0.99.3 ==
  * pm/power.d/laptop-tools:
