@@ -47,4 +47,4 @@ There have also been major changes in the pm-utils project:
  * Michael Biebl improved the PMU support and caught most of the bugs that Victor did not catch. 
  * Till Maas improved the locking code through clever use of noclobber.
  * Dan Nicholson cleaned up our use of autotools, and added pkg-config support.
- * pm-utils now uses git as it source-control repository. You can browse the code at http://cgit.freedesktop.org/pm-utils/, and 
+ * pm-utils now uses git as it source-control repository. You can browse the code at http://cgit.freedesktop.org/pm-utils/
