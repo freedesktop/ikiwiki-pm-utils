@@ -16,22 +16,18 @@ Here is a list about useful resources:
 
 = Downloading pm-utils =
 
-pm-utils now uses git. For anonymous access please do:
+pm-utils now uses git for version control. To check out the git repository:
 {{{
 git clone git://anongit.freedesktop.org/git/pm-utils
 }}}
 
-== development changes ==
- * pm-utils is POSIX compliant.
- * pm-utils has been refactored to make it more modular in how it handles hooks and sleep methods.
- * pm-utils includes basic support for tuxonice and uswsusp.
- * Full changelog at http://cgit.freedesktop.org/pm-utils/log/
+The code in the CVS repository at http://webcvs.freedesktop.org/pm-utils/pm-utils/ is obsolete, and should no longer be used.  No development changes will be backported to CVS.
 
 = latest release =
- * [http://pm-utils.freedesktop.org/releases/pm-utils-1.1.0.tar.gz pm-utils-1.1.0.tar.gz] (md5sum: 
+ * The latest release of pm-utils is 1.1.0. You can download it from [http://pm-utils.freedesktop.org/releases/pm-utils-1.1.0.tar.gz] (md5sum: 
  a9fcb1ee69ddc24bcc174ebf56f2cf11)
 
-== Release announcement ==
+== 1.1.0 Release announcement ==
 
  * All the scripts that make up pm-utils have been rewritten to conform to POSIX and the Single Unix Specification. Any remaining bashisms or GNUisms are bugs. If you encounter a script that is not POSIX and SuS compliant, please file a bug.
  * There have been several changes to the way hooks are detected and invoked. If you have a custom-written hook that breaks upon installation of this package, you may have to perform some minor fixups to make it work again. All the hooks that are supplied with pm-utils have been updated to take full advantage of these changes, so use them as examples. For more detailed information, see pm/HOWTO.hooks.
