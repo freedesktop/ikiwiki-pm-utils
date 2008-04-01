@@ -4,7 +4,9 @@
 #pragma section-numbers off
 = Power Management Utilities =
 
-This wiki is about pm-utils, here is a list about useful resources:
+pm-utils is a small collection of scripts that handle suspend and resume on behalf of HAL.
+
+Here is a list about useful resources:
 
  * [http://gitweb.freedesktop.org/?p=pm-utils.git;a=summary Web Interface to the git repository]
  * [http://lists.freedesktop.org/mailman/listinfo/pm-utils Mailing List]
@@ -40,7 +42,7 @@ git clone git://anongit.freedesktop.org/git/pm-utils
   * The ADD_PARAMETERS and DROP_PARAMETERS environment variables allow you to modify the parameters passed by calling programs (such as HAL).
   * More complete logging, including logging the commandline parameters, which hooks ran and did not run (and the reasons why), and logging the status codes of executed hooks.
  * pm-utils has pkg-config support. This makes it much easier for other programs to rely on pm-utils for all their suspend/resume quirk handling needs.
-In addition to these major changes, there have been a whole slew of minor changes and bugfixes. Most of the pm-utils related bugs that the distributions have encountered have been fixed in this release. Please see the ChangeLog for more details.
+In addition to these major changes, there have been a whole slew of minor changes and bugfixes. Most of the pm-utils related bugs that the distributions have encountered have been fixed in this release. Please see the [http://cgit.freedesktop.org/pm-utils/log/ ChangeLog] for more details.
 There have also been major changes in the pm-utils project:
  * Richard Hughes assumed maintainership of the project after a long period of inactivity by Peter Jones. Richard then transitioned the project from using CVS to using git as the version control system, and opened the floor to several new contributors.
  * Victor Lowther rewrote all the scripts to be POSIX compliant, added the modular sleep backends, added the new debugging features, and did lots of code cleanups and bug fixes. If you find a bug, it is probably his fault.
