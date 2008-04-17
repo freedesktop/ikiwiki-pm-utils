@@ -8,7 +8,7 @@ pm-utils is a small collection of scripts that handle suspend and resume on beha
 
 Here is a list about useful resources:
 
- * [http://gitweb.freedesktop.org/?p=pm-utils.git;a=summary Web Interface to the git repository]
+ * [http://gitweb.freedesktop.org/?p=pm-utils.git;a=summary Web Interface to the git repository] [http://cgit.freedesktop.org/pm-utils/ CGIT Interface]
  * [http://lists.freedesktop.org/mailman/listinfo/pm-utils Mailing List]
  * [http://people.freedesktop.org/~hughsient/quirk/quirk-suspend-index.html HAL Suspend Quirks]
  * [http://en.opensuse.org/Pm-utils Open Suse wiki about pm-utils]
