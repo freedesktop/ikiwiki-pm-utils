@@ -26,8 +26,8 @@ git clone git://anongit.freedesktop.org/git/pm-utils
 The code in the CVS repository at http://webcvs.freedesktop.org/pm-utils/pm-utils/ is obsolete, and should no longer be used.  No development changes will be backported to CVS.
 
 = latest release =
- * The latest release of pm-utils is 1.1.0. You can download it from [http://pm-utils.freedesktop.org/releases/pm-utils-1.1.0.tar.gz] (md5sum: 
- a9fcb1ee69ddc24bcc174ebf56f2cf11)
+ * The latest release of pm-utils is 1.1.1. You can download it from [http://pm-utils.freedesktop.org/releases/pm-utils-1.1.1.tar.gz] (md5sum: 
+ db6e9386a5523c5bea739317be83c38e)
 
 == 1.1.0 Release announcement ==
 
