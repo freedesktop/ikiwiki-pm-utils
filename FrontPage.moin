@@ -35,6 +35,7 @@ The code in the CVS repository at http://webcvs.freedesktop.org/pm-utils/pm-util
  * Dan Nicholson committed automake cleanups for the new manpages.
  * If you are running pm-utils on a system that has a video card with a driver that is smart enough to handle quirks by itself, pm-utils will no longer attempt to run its video quirks.  Thanks, Matthew Garrett.
  * README and HOWTO files will actually be installed from the dist tarballs now.
+ * A bug involving vbe mode restoration has been fixed. This fix was actually comitted in the pm-utils 1.1.1 release, but no notice was made in the release announcement.
 
 = 1.1.0 Release announcement =
 
