@@ -31,7 +31,7 @@ The code in the CVS repository at http://webcvs.freedesktop.org/pm-utils/pm-util
 
 == 1.1.2.1 Release Announcement ==
  * Fix a bug noticed by Michael Biebl that prevents pm-utils from saving commandline parameters correctly.
- * Return $NA instead of when we are tunning on a system that 98-smart-kernel-video does not recognize.
+ * Return $NA instead of when we are running on a system that 98-smart-kernel-video does not recognize.
  * Close a security hole noticed by Michael Biebl that might allow arbitrary file removal.  We now handle commandline parameters using a single file instead of lots of smaller ones.
 
 == 1.1.2 Release Announcement ==
