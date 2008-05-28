@@ -26,8 +26,13 @@ git clone git://anongit.freedesktop.org/git/pm-utils
 The code in the CVS repository at http://webcvs.freedesktop.org/pm-utils/pm-utils/ is obsolete, and should no longer be used.  No development changes will be backported to CVS.
 
 = latest release =
- * The latest release of pm-utils is 1.1.2. You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.1.2.tar.gz]] (md5sum: 
- 7c382d9297317040b82ddc3ea2cd6d80)
+ * The latest release of pm-utils is 1.1.2.1 You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.1.2.1tar.gz]] (md5sum: 
+ 3c7e129bec8e81b0760d9b48ff7e0222)
+
+== 1.1.2.1 Release Announcement ==
+ * Fix a bug noticed by Michael Biebl that prevents pm-utils from saving commandline parameters correctly.
+ * Return $NA instead of when we are tunning on a system that 98-smart-kernel-video does not recognize.
+ * Close a security hole noticed by Michael Biebl that might allow arbitrary file removal.  We now handle commandline parameters using a single file instead of lots of smaller ones.
 
 == 1.1.2 Release Announcement ==
  * Manpage generation has been rewritten to use xmlto instead of the older SGML utilities.
