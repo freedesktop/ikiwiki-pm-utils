@@ -26,12 +26,11 @@ git clone git://anongit.freedesktop.org/git/pm-utils
 The code in the CVS repository at http://webcvs.freedesktop.org/pm-utils/pm-utils/ is obsolete, and should no longer be used.  No development changes will be backported to CVS.
 
 = latest release =
- * The latest release of pm-utils is 1.1.2.2 You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.1.2.2.tar.gz]] (md5sum: 
- 5181e801c4de00a18655b0f678182201)
+ * The latest release of pm-utils is 1.1.2.3 You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.1.2.3.tar.gz]] (md5sum: 
+ aede0cf8d44fa3eb4daa88aabc5cbe99)
 
-= testing release =
- * The latest test release of pm-utils is 1.1.2.3-test1 You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.1.2.3-test1.tar.gz]] 
- * This release is intended to fix a bug in the code that detects when an in-kernel Intel video driver is being used that does not require quirks. Please report any bugs in this code to http://bugs.freedesktop.org (file the bug under pm-utils) and post the report to the pm-utils mailing list.
+== 1.1.2.3 Release Announcement ==
+ * Fix a bug in parsing the kernel revision when testing to see if the in-kernel intel video driver requires userspace quirk handling.
 
 == 1.1.2.2 Release Announcement ==
  * Fix a bug in the fix for the previous bug noticed by Michael Biebl that prevents pm-utils from saving commandline parameters correctly.
