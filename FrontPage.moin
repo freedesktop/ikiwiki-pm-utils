@@ -29,6 +29,16 @@ The code in the CVS repository at http://webcvs.freedesktop.org/pm-utils/pm-util
  * The latest release of pm-utils is 1.1.2.3 You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.1.2.3.tar.gz]] (md5sum: 
  aede0cf8d44fa3eb4daa88aabc5cbe99)
 
+= Bleeding edge code =
+
+The archives linked to in this section are '''not''' official releases.  They track the branches that Victor is working on, will change immediatly without warning, and might cause your computer to eat babies.  However, if you can't wait to test the latest pm-utils code, but do not wish to get it using git (for whatever reason), here is the place to get the very latest pm-utils development code.
+ * Master: [[http://git.fnordovax.org/pm-utils/snapshot/pm-utils-master.tar.gz|pm-utils.master.tar.gz]]  Master is the master branch of the GIT repository -- most development happens here
+ * pm-utils-1.1: [[http://git.fnordovax.org/pm-utils/snapshot/pm-utils-pm-utils-1.1.tar.gz?h=pm-utils-1.1|pm-utils-1.1.tar.gz]]  pm-utils-1.1 is the current maintenance branch of pm-utils.  Only bugfixes and critical functionality updates will be applied to this branch.
+ * pm-utils-1.2: [[http://git.fnordovax.org/pm-utils/snapshot/pm-utils-pm-utils-1.2.tar.gz?h=pm-utils-1.2|pm-utils-1.2.tar.gz]]  pm-utils-1.2 is the next major release of pm-utils.  This branch is currently stabilizing.
+ * powersave-hooks: [[http://git.fnordovax.org/pm-utils/snapshot/pm-utils-powersave-hooks.tar.gz?h=powersave-hooks|pm-utils-powersave-hooks.tar.gz]]  Experimental pm-utils branch with basic power saving hooks.  Inspired by [[http://samwel.tk/laptop_mode/|laptop-mode-tools]], but it reuses the common functionality pm-utils already has and has zero knobs to tune.
+
+= Release notes =
+
 == 1.1.2.3 Release Announcement ==
  * Fix a bug in parsing the kernel revision when testing to see if the in-kernel intel video driver requires userspace quirk handling.
 
