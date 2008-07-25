@@ -25,13 +25,15 @@ git clone git://anongit.freedesktop.org/git/pm-utils
 
 The code in the CVS repository at http://webcvs.freedesktop.org/pm-utils/pm-utils/ is obsolete, and should no longer be used.  No development changes will be backported to CVS.
 
-= latest release =
- * The latest release of pm-utils is 1.1.2.3 You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.1.2.3.tar.gz]] (md5sum: 
- aede0cf8d44fa3eb4daa88aabc5cbe99)
+= latest maintenance release =
+ * The latest maintenance release of pm-utils is 1.1.2.3. You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.1.2.3.tar.gz]] (md5sum: 
+ aede0cf8d44fa3eb4daa88aabc5cbe99).  1.1.2.4 is scheduled for release shortly, and will contain a fix for suspend/resume on 2.6.26 and greater Linux kernels using kernel modesetting Intel video drivers.
+
+= latest testing release =
+ * The latest testing release of pm-utils is 1.2.0-rc1. You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.1.2.3.tar.gz]] (md5sum: 579b2f08c4198654221afcbb426aa146). This code works for the maintainer, but needs wider testing before calling it 1.2.0.
 
 = Bleeding edge code =
-
-The archives linked to in this section are '''not''' official releases.  They track the branches that Victor is working on, will change immediatly without warning, and might cause your computer to eat babies.  However, if you can't wait to test the latest pm-utils code, but do not wish to get it using git (for whatever reason), here is the place to get the very latest pm-utils development code.
+The archives linked to in this section are '''not''' official releases.  They track the branches that Victor is working on, will change immediately without warning, and might cause your computer to eat babies.  However, if you can't wait to test the latest pm-utils code, but do not wish to get it using git (for whatever reason), here is the place to get the very latest pm-utils development code.
  * Master: [[http://git.fnordovax.org/pm-utils/snapshot/pm-utils-master.tar.gz|pm-utils.master.tar.gz]]  Master is the master branch of the GIT repository -- most development happens here
  * pm-utils-1.1: [[http://git.fnordovax.org/pm-utils/snapshot/pm-utils-pm-utils-1.1.tar.gz?h=pm-utils-1.1|pm-utils-1.1.tar.gz]]  pm-utils-1.1 is the current maintenance branch of pm-utils.  Only bugfixes and critical functionality updates will be applied to this branch.
  * pm-utils-1.2: [[http://git.fnordovax.org/pm-utils/snapshot/pm-utils-pm-utils-1.2.tar.gz?h=pm-utils-1.2|pm-utils-1.2.tar.gz]]  pm-utils-1.2 is the next major release of pm-utils.  This branch is currently stabilizing.
