@@ -30,7 +30,7 @@ The code in the CVS repository at http://webcvs.freedesktop.org/pm-utils/pm-util
  aede0cf8d44fa3eb4daa88aabc5cbe99).  1.1.2.4 is scheduled for release shortly, and will contain a fix for suspend/resume on 2.6.26 and greater Linux kernels using kernel modesetting Intel video drivers.
 
 = latest testing release =
- * The latest testing release of pm-utils is 1.2.0-rc1. You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.1.2.3.tar.gz]] (md5sum: 579b2f08c4198654221afcbb426aa146). This code works for the maintainer, but needs wider testing before calling it 1.2.0.
+ * The latest testing release of pm-utils is 1.2.0-rc1. You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.2.0-rc1.tar.gz]] (md5sum: 579b2f08c4198654221afcbb426aa146). This code works for the maintainer, but needs wider testing before calling it 1.2.0.
 
 = Bleeding edge code =
 The archives linked to in this section are '''not''' official releases.  They track the branches that Victor is working on, will change immediately without warning, and might cause your computer to eat babies.  However, if you can't wait to test the latest pm-utils code, but do not wish to get it using git (for whatever reason), here is the place to get the very latest pm-utils development code.
