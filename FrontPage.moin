@@ -26,11 +26,11 @@ git clone git://anongit.freedesktop.org/git/pm-utils
 The code in the CVS repository at http://webcvs.freedesktop.org/pm-utils/pm-utils/ is obsolete, and should no longer be used.  No development changes will be backported to CVS.
 
 = latest maintenance release =
- * The latest maintenance release of pm-utils is 1.1.2.3. You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.1.2.3.tar.gz]] (md5sum: 
- aede0cf8d44fa3eb4daa88aabc5cbe99).  1.1.2.4 is scheduled for release shortly, and will contain a fix for suspend/resume on 2.6.26 and greater Linux kernels using kernel modesetting Intel video drivers.
+ * The latest maintenance release of pm-utils is 1.1.2.4. You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.1.2.4.tar.gz]] (md5sum: 
+ 5aa6d338fb8172f1826a1b08ae601a42).  It contains a fix for suspend/resume on 2.6.26 and greater Linux kernels using kernel modesetting Intel video drivers.
 
 = latest testing release =
- * The latest testing release of pm-utils is 1.2.0-rc1. You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.2.0-rc1.tar.gz]] (md5sum: 579b2f08c4198654221afcbb426aa146). This code works for the maintainer, but needs wider testing before calling it 1.2.0.
+ * The latest testing release of pm-utils is 1.2.0-rc1. You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.2.0-rc1.tar.gz]] (md5sum: 579b2f08c4198654221afcbb426aa146). This code works for the maintainer, but needs wider testing before calling it 1.2.0.  Please send any feedback (positive and negative) to [[mailto:pm-utils@lists.freedesktop.org|pm-utils@lists.freedesktop.org]]
 
 = Bleeding edge code =
 The archives linked to in this section are '''not''' official releases.  They track the branches that Victor is working on, will change immediately without warning, and might cause your computer to eat babies.  However, if you can't wait to test the latest pm-utils code, but do not wish to get it using git (for whatever reason), here is the place to get the very latest pm-utils development code.
@@ -40,6 +40,9 @@ The archives linked to in this section are '''not''' official releases.  They tr
  * powersave-hooks: [[http://git.fnordovax.org/pm-utils/snapshot/pm-utils-powersave-hooks.tar.gz?h=powersave-hooks|pm-utils-powersave-hooks.tar.gz]]  Experimental pm-utils branch with basic power saving hooks.  Inspired by [[http://samwel.tk/laptop_mode/|laptop-mode-tools]], but it reuses the common functionality pm-utils already has and has zero knobs to tune.
 
 = Release notes =
+
+== 1.1.2.4 Release Announcement ==
+ * Intel i915 kernel modesetting in Linux 2.6.26 did not render all video quirks obsolete, alas.  Certain systems still require --quirk-s3-mode and/or --quirk-s3-bios to resume with full functionality. This update keeps those quirks if they are present when using the i915 kernel modesetting driver.
 
 == 1.1.2.3 Release Announcement ==
  * Fix a bug in parsing the kernel revision when testing to see if the in-kernel intel video driver requires userspace quirk handling.
@@ -61,7 +64,7 @@ The archives linked to in this section are '''not''' official releases.  They tr
  * README and HOWTO files will actually be installed from the dist tarballs now.
  * A bug involving vbe mode restoration has been fixed. This fix was actually comitted in the pm-utils 1.1.1 release, but no notice was made in the release announcement.
 
-= 1.1.0 Release announcement =
+== 1.1.0 Release announcement ==
 
  * All the scripts that make up pm-utils have been rewritten to conform to POSIX and the Single Unix Specification. Any remaining bashisms or GNUisms are bugs. If you encounter a script that is not POSIX and SuS compliant, please file a bug.
  * There have been several changes to the way hooks are detected and invoked. If you have a custom-written hook that breaks upon installation of this package, you may have to perform some minor fixups to make it work again. All the hooks that are supplied with pm-utils have been updated to take full advantage of these changes, so use them as examples. For more detailed information, see pm/HOWTO.hooks.
