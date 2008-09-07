@@ -25,21 +25,29 @@ git clone git://anongit.freedesktop.org/git/pm-utils
 
 The code in the CVS repository at http://webcvs.freedesktop.org/pm-utils/pm-utils/ is obsolete, and should no longer be used.  No development changes will be backported to CVS.
 
+= latest stable release =
+ * The latest stable release of pm-utils is 1.2.0. You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.2.0.tar.gz]] (md5sum: 4f111de7b54275f09fbcd49775d6b1ae). Detailed notes about what has changed since the 1.1 series is in the release notes section.
+
 = latest maintenance release =
  * The latest maintenance release of pm-utils is 1.1.2.4. You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.1.2.4.tar.gz]] (md5sum: 
  5aa6d338fb8172f1826a1b08ae601a42).  It contains a fix for suspend/resume on 2.6.26 and greater Linux kernels using kernel modesetting Intel video drivers.
 
-= latest testing release =
- * The latest testing release of pm-utils is 1.2.0-rc1. You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.2.0-rc1.tar.gz]] (md5sum: 579b2f08c4198654221afcbb426aa146). This code works for the maintainer, but needs wider testing before calling it 1.2.0.  Please send any feedback (positive and negative) to [[mailto:pm-utils@lists.freedesktop.org|pm-utils@lists.freedesktop.org]]
 
 = Bleeding edge code =
 The archives linked to in this section are '''not''' official releases.  They track the branches that Victor is working on, will change immediately without warning, and might cause your computer to eat babies.  However, if you can't wait to test the latest pm-utils code, but do not wish to get it using git (for whatever reason), here is the place to get the very latest pm-utils development code.
  * Master: [[http://git.fnordovax.org/pm-utils/snapshot/pm-utils-master.tar.gz|pm-utils.master.tar.gz]]  Master is the master branch of the GIT repository -- most development happens here
  * pm-utils-1.1: [[http://git.fnordovax.org/pm-utils/snapshot/pm-utils-pm-utils-1.1.tar.gz?h=pm-utils-1.1|pm-utils-1.1.tar.gz]]  pm-utils-1.1 is the current maintenance branch of pm-utils.  Only bugfixes and critical functionality updates will be applied to this branch.
- * pm-utils-1.2: [[http://git.fnordovax.org/pm-utils/snapshot/pm-utils-pm-utils-1.2.tar.gz?h=pm-utils-1.2|pm-utils-1.2.tar.gz]]  pm-utils-1.2 is the next major release of pm-utils.  This branch is currently stabilizing.
+ * pm-utils-1.2: [[http://git.fnordovax.org/pm-utils/snapshot/pm-utils-pm-utils-1.2.tar.gz?h=pm-utils-1.2|pm-utils-1.2.tar.gz]]  pm-utils-1.2 is the current major release of pm-utils.  
  * powersave-hooks: [[http://git.fnordovax.org/pm-utils/snapshot/pm-utils-powersave-hooks.tar.gz?h=powersave-hooks|pm-utils-powersave-hooks.tar.gz]]  Experimental pm-utils branch with basic power saving hooks.  Inspired by [[http://samwel.tk/laptop_mode/|laptop-mode-tools]], but it reuses the common functionality pm-utils already has and has zero knobs to tune.
 
 = Release notes =
+
+== 1.2.0 Release Announcement ==
+
+ * The core hook-running machinery will now abort running hooks of one fails, and the front-end scripts will return a failure error code if hook-running was aborted.
+ * We have guidelines for hook ordering conventions for suspend/resume hooks.  The hooks packaged with pm-utils have been reordered to conform to these conventions. See pm/HOWTO.hooks for more information.
+ * We handle suspend-hybrid correctly.  The two hooks that care about the difference between suspend, hibernate, and hybrid suspend have been updated to take hybrid suspend into account -- the remainder of the hooks required no modification.
+ * Some changes have been made to the core pm-utils code to make pm-powersave more useful.  Specifically, it is now possible to have different settings loaded depending on whether or not you are using using pm-action to initiate a suspend/resume or you are using pm-powersave to enable or disable power saving functionality, and sleep and power hooks will not interfere with each other when using the functionality provided by ${PM_FUNCTIONS}.  The experimental powersave-hooks branch in the main git repository contains some example powersave hooks that use this functionality.
 
 == 1.1.2.4 Release Announcement ==
  * Intel i915 kernel modesetting in Linux 2.6.26 did not render all video quirks obsolete, alas.  Certain systems still require --quirk-s3-mode and/or --quirk-s3-bios to resume with full functionality. This update keeps those quirks if they are present when using the i915 kernel modesetting driver.
