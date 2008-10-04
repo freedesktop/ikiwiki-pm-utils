@@ -26,11 +26,11 @@ git clone git://anongit.freedesktop.org/git/pm-utils
 The code in the CVS repository at http://webcvs.freedesktop.org/pm-utils/pm-utils/ is obsolete, and should no longer be used.  No development changes will be backported to CVS.
 
 = latest stable release =
- * The latest stable release of pm-utils is 1.2.0. You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.2.0.tar.gz]] (md5sum: 4f111de7b54275f09fbcd49775d6b1ae). Detailed notes about what has changed since the 1.1 series is in the release notes section.
+ * The latest stable release of pm-utils is 1.2.1. You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.2.1.tar.gz]] (md5sum: c8b6ee8f85c085fcc3a12d0ef959f5b8). It now supports automatically pulling quirks from HAL and has the ability to save the last working set of quirks to an .fdi file suitable for merging with hal-info.
 
 = latest maintenance release =
- * The latest maintenance release of pm-utils is 1.1.2.4. You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.1.2.4.tar.gz]] (md5sum: 
- 5aa6d338fb8172f1826a1b08ae601a42).  It contains a fix for suspend/resume on 2.6.26 and greater Linux kernels using kernel modesetting Intel video drivers.
+ * The latest maintenance release of pm-utils is 1.1.2.5. You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.1.2.5.tar.gz]] (md5sum: 
+ 43b44b61738ecb43c05e1ccca422b7de).  It contains support for saving/restoring PCI video card state and fixed a bug involving displaying hook-specific help.
 
 
 = Bleeding edge code =
@@ -41,6 +41,16 @@ The archives linked to in this section are '''not''' official releases.  They tr
  * powersave-hooks: [[http://git.fnordovax.org/pm-utils/snapshot/pm-utils-powersave-hooks.tar.gz?h=powersave-hooks|pm-utils-powersave-hooks.tar.gz]]  Experimental pm-utils branch with basic power saving hooks.  Inspired by [[http://samwel.tk/laptop_mode/|laptop-mode-tools]], but it reuses the common functionality pm-utils already has and has zero knobs to tune.
 
 = Release notes =
+
+== 1.2.1 Release Announcement ==
+ * Same bugfixes as in 1.1.2.5
+ * Sleep modules are stackable and have finegrained method detection.  For instance, if you like s2disk but not s2ram, you can remove the s2ram binary and pm-utils will automatically fall back to using kernel methods for suspend/resume.
+ * pm-utils will now try to pull the appropriate quirks out of HAL (if installed) and if you call pm-suspend and friends with no parameters.  You can also force this behaviour with the  --auto-quirks parameter.
+ * pm-utils has support for saving quirks as a HAL FDI file.  If called with --store-quirks-as-fdi, an .fdi file specific to the machine and quirks passed on the command line will be written to /tmp/pm-utils-created.fdi.
+
+== 1.1.2.5 Release Announcement ==
+ * pm-utils now handles pci state saving/restoring as part of video quirk handling.  How we missed it for this long is beyond me.
+ * Fixed a logging bug that aborted displaying help text after the first quirk that had help text.
 
 == 1.2.0 Release Announcement ==
 
