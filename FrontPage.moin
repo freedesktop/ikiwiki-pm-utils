@@ -26,7 +26,7 @@ git clone git://anongit.freedesktop.org/git/pm-utils
 The code in the CVS repository at http://webcvs.freedesktop.org/pm-utils/pm-utils/ is obsolete, and should no longer be used.  No development changes will be backported to CVS.
 
 = latest stable release =
- * The latest stable release of pm-utils is 1.2.2. You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.2.2.tar.gz]] (md5sum: 4dc456311f22b9383657bd99ff05b360). It now actially supports automatically pulling quirks from HAL and has the ability to save the last working set of quirks to an .fdi file suitable for merging with hal-info, as opposed to only claiming to like the last release did.
+ * The latest stable release of pm-utils is 1.2.2.1 You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.2.2.1.tar.gz]] (md5sum: dcc7bde623d0bae207158e153b7394a8). It now actually supports automatically pulling quirks from HAL and has the ability to save the last working set of quirks to an .fdi file suitable for merging with hal-info, as opposed to only claiming to like the last release did.
 
 = latest maintenance release =
  * The latest maintenance release of pm-utils is 1.1.2.5. You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.1.2.5.tar.gz]] (md5sum: 
@@ -41,6 +41,9 @@ The archives linked to in this section are '''not''' official releases.  They tr
  * powersave-hooks: [[http://git.fnordovax.org/pm-utils/snapshot/pm-utils-powersave-hooks.tar.gz?h=powersave-hooks|pm-utils-powersave-hooks.tar.gz]]  Experimental pm-utils branch with basic power saving hooks.  Inspired by [[http://samwel.tk/laptop_mode/|laptop-mode-tools]], but it reuses the common functionality pm-utils already has and has zero knobs to tune.
 
 = Release notes =
+
+== 1.2.2.1 Release Announcement == 
+ * One-liner to make 00auto-quirk work when there is more than one quirk.  Thanks again, Michael Biebl.
 
 == 1.2.2 Release Announcement ==
  * Numerous bugfixes to actually make all the stuff that should have worked in 1.2.1 really work. Thanks, Michael Biebl.
