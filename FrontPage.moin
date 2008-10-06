@@ -42,7 +42,7 @@ The archives linked to in this section are '''not''' official releases.  They tr
 
 = Release notes =
 
-== 1.2.2.1 Release Announcement == 
+== 1.2.2.1 Release Announcement ==
  * One-liner to make 00auto-quirk work when there is more than one quirk.  Thanks again, Michael Biebl.
 
 == 1.2.2 Release Announcement ==
