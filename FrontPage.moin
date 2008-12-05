@@ -26,7 +26,7 @@ git clone git://anongit.freedesktop.org/git/pm-utils
 The code in the CVS repository at http://webcvs.freedesktop.org/pm-utils/pm-utils/ is obsolete, and should no longer be used.  No development changes will be backported to CVS.
 
 = latest stable release =
- * The latest stable release of pm-utils is 1.2.2.1 You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.2.2.1.tar.gz]] (md5sum: dcc7bde623d0bae207158e153b7394a8). It now actually supports automatically pulling quirks from HAL and has the ability to save the last working set of quirks to an .fdi file suitable for merging with hal-info, as opposed to only claiming to like the last release did.
+ * The latest stable release of pm-utils is 1.2.3 You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.2.3.tar.gz]] (md5sum: 2a9a9e3de8bcda43c88a9e346866fd55). It shaves about 2 seconds off suspend/resume time by removing some workarounds for problems which don't exist anymore.
 
 = latest maintenance release =
  * The latest maintenance release of pm-utils is 1.1.2.5. You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.1.2.5.tar.gz]] (md5sum: 
@@ -41,6 +41,11 @@ The archives linked to in this section are '''not''' official releases.  They tr
  * powersave-hooks: [[http://git.fnordovax.org/pm-utils/snapshot/pm-utils-powersave-hooks.tar.gz?h=powersave-hooks|pm-utils-powersave-hooks.tar.gz]]  Experimental pm-utils branch with basic power saving hooks.  Inspired by [[http://samwel.tk/laptop_mode/|laptop-mode-tools]], but it reuses the common functionality pm-utils already has and has zero knobs to tune.
 
 = Release notes =
+
+== 1.2.3 Release Announcement ==
+ * Removed 55battery, 50ntpd, and 65alsa hooks.  They worked around problems which have been resolved for a couple of years now, or which should be worked around elsewhere to have the intended effect.  See the NEWS file and/or the changelog for more info.
+ * pkg-config contains variables which point directly at the location to install hooks.
+ * We always set the ACPI S3 flags on suspend now.  This fixes some instances where suspend works once and then fails.  We ignore the parameter passed to the kernel -- please consider creating an .fdi file that covers your system and posting it to the pm-utils or HAL mailing list if you rely on the kernel flag.
 
 == 1.2.2.1 Release Announcement ==
  * One-liner to make 00auto-quirk work when there is more than one quirk.  Thanks again, Michael Biebl.
