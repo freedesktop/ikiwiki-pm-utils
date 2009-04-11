@@ -26,7 +26,7 @@ git clone git://anongit.freedesktop.org/git/pm-utils
 The code in the CVS repository at http://webcvs.freedesktop.org/pm-utils/pm-utils/ is obsolete, and should no longer be used.  No development changes will be backported to CVS.
 
 = latest stable release =
- * The latest stable release of pm-utils is 1.2.4 You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.2.4.tar.gz]] (md5sum: 965bdce8fccaaa5ae2b304e52b362c6e). It fixes a glitch in module unloading, and had numerous small usability and debugging improvements.
+ * The latest stable release of pm-utils is 1.2.5 You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.2.5.tar.gz]] (md5sum: f69db402e1869321cac72ffd2f77fa99). It adds support for kernel mode setting.
 
 = latest maintenance release =
  * The latest maintenance release of pm-utils is 1.1.3 You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.1.3.tar.gz]] (md5sum: 
@@ -41,6 +41,10 @@ The archives linked to in this section are '''not''' official releases.  They tr
  * powersave-hooks: [[http://git.fnordovax.org/pm-utils/snapshot/pm-utils-powersave-hooks.tar.gz?h=powersave-hooks|pm-utils-powersave-hooks.tar.gz]]  Experimental pm-utils branch with basic power saving hooks.  Inspired by [[http://samwel.tk/laptop_mode/|laptop-mode-tools]], but it reuses the common functionality pm-utils already has and has zero knobs to tune.
 
 = Release notes =
+
+== 1.2.5 Release Announcement ==
+ * If running on a system that is using Kernel Mode Setting, we will refuse to handle any video quirks passed to us by HAL, and we will not chvt to an empty console.
+ * Fix a longstanding bug in tuning scheduler powersaving knobs on SMT systems.
 
 == 1.2.4 Release Announcement ==
  * We now provide the location of the configuration files as a pkg-config variable, and fixed a bug that kept pkg-config from functioning correctly. Other packages should now be able to intergrate with pm-utils much easier.
