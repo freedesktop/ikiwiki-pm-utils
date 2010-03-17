@@ -26,21 +26,21 @@ git clone git://anongit.freedesktop.org/git/pm-utils
 The code in the CVS repository at http://webcvs.freedesktop.org/pm-utils/pm-utils/ is obsolete, and should no longer be used.  No development changes will be backported to CVS.
 
 = latest stable release =
- * The latest stable release of pm-utils is 1.2.6.1 You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.2.6.1.tar.gz]] (md5sum:ddbb73b5fd1e5a2c77ad3ce537a0260c ). It readds the quirk fixes we mistakenly removed from 1.2.6.
+ * The latest stable release of pm-utils is 1.3.0.  You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.3.0.tar.gz]] (md5sum:37d71f8adbb409442212a85a080d324d). It adds support for profiling, and takes over maintenance of the quirk database from HAL.  This tarball does not contain the new video quirks -- see the release notes to see how to get them.
 
 = latest maintenance release =
- * The latest maintenance release of pm-utils is 1.1.3 You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.1.3.tar.gz]] (md5sum: 
- 43b44b61738ecb43c05e1ccca422b7de).  It fixes a glitch in module unloading.
-
-
-= Bleeding edge code =
-The archives linked to in this section are '''not''' official releases.  They track the branches that Victor is working on, will change immediately without warning, and might cause your computer to eat babies.  However, if you can't wait to test the latest pm-utils code, but do not wish to get it using git (for whatever reason), here is the place to get the very latest pm-utils development code.
- * Master: [[http://git.fnordovax.org/pm-utils/snapshot/pm-utils-master.tar.gz|pm-utils.master.tar.gz]]  Master is the master branch of the GIT repository -- most development happens here
- * pm-utils-1.1: [[http://git.fnordovax.org/pm-utils/snapshot/pm-utils-pm-utils-1.1.tar.gz?h=pm-utils-1.1|pm-utils-1.1.tar.gz]]  pm-utils-1.1 is the current maintenance branch of pm-utils.  Only bugfixes and critical functionality updates will be applied to this branch.
- * pm-utils-1.2: [[http://git.fnordovax.org/pm-utils/snapshot/pm-utils-pm-utils-1.2.tar.gz?h=pm-utils-1.2|pm-utils-1.2.tar.gz]]  pm-utils-1.2 is the current major release of pm-utils.  
- * powersave-hooks: [[http://git.fnordovax.org/pm-utils/snapshot/pm-utils-powersave-hooks.tar.gz?h=powersave-hooks|pm-utils-powersave-hooks.tar.gz]]  Experimental pm-utils branch with basic power saving hooks.  Inspired by [[http://samwel.tk/laptop_mode/|laptop-mode-tools]], but it reuses the common functionality pm-utils already has and has zero knobs to tune.
+ * The latest maintenance release of pm-utils is 1.2.6.1 You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.2.6.1.tar.gz]] (md5sum:ddbb73b5fd1e5a2c77ad3ce537a0260c ). It readds the quirk fixes we mistakenly removed from 1.2.6.
 
 = Release notes =
+
+== 1.3.0 Release Announcement ==
+ * Take over responsibility for maintaining the video quirk database from HAL.  We were the primary users of that functionality, and HAL is going away in the near future. 
+  * The 1.3.0 release tarball does not contain the video quirk database.  You can use the provided import-fdi-quirkdb utility to grab the video quirk database from HAL, or you can untar [[http://pm-utils.freedesktop.org/releases/pm-quirks-20100316.tar.gz]] into $PM_UTILS_LIBDIR/video-quirks/.
+  * The hook that handles querying the native quirk database is written in bash, and relies on the regex support in bash3 and above.  Those of you who eschew bash or prefer to kick it bash2 style should probably stick with the 1.2 series for now.
+ * Added --quirk-test to allow you to use exactly the quirks you specify on the commandline, overriding the sanity checking the native quirk handler performs. This can cause your system to crash in new and exciting ways. You have been warned.
+ * Track whether suspend/hibernate succeeded, and handle things as appropriately as we can. This mostly involves telling whoever called us that something failed by exiting with a return code > 127.
+ * Add a native suspend-hybrid method. This involves scheduling a wakeup call through the RTC for 900 seconds in the future, going to sleep, and hibernating at wakeup if we woke up 900 seconds later.  If the hibernate fails for any reason we just go back to suspend.
+ * We can profile the entire suspend/resume process to see how much time is taken by each of the hooks.  See the documentation for PM_PROFILE for more information.
 
 == 1.2.6.1 Release Announcement ==
  * Readd smart-kernel-video support for non-KMS i915 Intel framebuffer drivers.
