@@ -1,0 +1,164 @@
+
+[!] **Because of too much spam, currently only members of the [[EditGroup|EditGroup]] can edit every page in the wiki. To become a member, please write to the mailinglist or write a comment [[here|FrontPage/Comments]].** 
+# Power Management Utilities
+
+pm-utils is a small collection of scripts that handle suspend and resume on behalf of HAL. 
+
+Here is a list about useful resources: 
+
+* [[Web Interface to the git repository|http://gitweb.freedesktop.org/?p=pm-utils.git;a=summary]] [[CGIT Interface|http://cgit.freedesktop.org/pm-utils/]] 
+* [[Mailing List|http://lists.freedesktop.org/mailman/listinfo/pm-utils]] 
+* [[HAL Suspend Quirks|http://people.freedesktop.org/~hughsient/quirk/quirk-suspend-index.html]] 
+* [[Open Suse wiki about pm-utils|http://en.opensuse.org/Pm-utils]] 
+* [[Freedesktop Bugzilla (select pm-utils as product)|https://bugs.freedesktop.org]] 
+
+# Downloading pm-utils
+
+pm-utils now uses git for version control. To check out the git repository: 
+[[!format txt """
+git clone git://anongit.freedesktop.org/git/pm-utils
+"""]]
+The code in the CVS repository at [[http://webcvs.freedesktop.org/pm-utils/pm-utils/|http://webcvs.freedesktop.org/pm-utils/pm-utils/]] is obsolete, and should no longer be used.  No development changes will be backported to CVS. 
+
+
+# latest stable release
+
+* The latest stable release of pm-utils is 1.4.1.  You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.4.1.tar.gz|http://pm-utils.freedesktop.org/releases/pm-utils-1.4.1.tar.gz]] (md5sum:1742a556089c36c3a89eb1b957da5a60). It rewrites on_ac_power to avoid a deadlock with upower and makes manpage generation a configureable option (enabled by default). 
+
+# latest maintenance release
+
+* The latest maintenance release of pm-utils is 1.3.1.  You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.3.1.tar.gz|http://pm-utils.freedesktop.org/releases/pm-utils-1.3.1.tar.gz]] (md5sum:c5a3249998f1a9e916cd61ddee048ab9). It has the same fixes as pm-utils 1.4 without the new powersave hooks. 
+
+# latest HAL dependent release release
+
+* The latest HAL dependent release of pm-utils is 1.2.7 You can download it from [[http://pm-utils.freedesktop.org/releases/pm-utils-1.2.7.tar.gz|http://pm-utils.freedesktop.org/releases/pm-utils-1.2.7.tar.gz]] (md5sum:ddbb73b5fd1e5a2c77ad3ce537a0260c ). It readds the quirk fixes we mistakenly removed from 1.2.6. 
+
+# Release notes
+
+
+## 1.4.0 Release Announcement
+
+* The pm-utils git tree includes infrastructure to build .deb packages, .rpm packages. and Arch Linux .tar packages.  These are not intended to replace distro packaging, and are not included in the release tarballs.  Patches are welcome for more distributions, and if you are interested in making the included build infrastructure capable of building release packages, I am interested in working with you. 
+* We include some basic power management hooks. The individual hooks can conflict with the ones provided by the laptop-mode-tools scripts, so you should either just remove laptop-mode-tools entirely or pick and choose between which package should handle what powersaving functionality.  More hooks to handle powersave functionality we do not currently handle are welcome, provided they are general enough to apply across a wide range of use cases. 
+
+## 1.3.0 Release Announcement
+
+* Take over responsibility for maintaining the video quirk database from HAL.  We were the primary users of that functionality, and HAL is going away in the near future.  
+   * The 1.3.0 release tarball does not contain the video quirk database.  You can use the provided import-fdi-quirkdb utility to grab the video quirk database from HAL, or you can untar [[http://pm-utils.freedesktop.org/releases/pm-quirks-20100316.tar.gz|http://pm-utils.freedesktop.org/releases/pm-quirks-20100316.tar.gz]] into $PM_UTILS_LIBDIR/video-quirks/. 
+   * The hook that handles querying the native quirk database is written in bash, and relies on the regex support in bash3 and above.  Those of you who eschew bash or prefer to kick it bash2 style should probably stick with the 1.2 series for now. 
+* Added --quirk-test to allow you to use exactly the quirks you specify on the commandline, overriding the sanity checking the native quirk handler performs. This can cause your system to crash in new and exciting ways. You have been warned. 
+* Track whether suspend/hibernate succeeded, and handle things as appropriately as we can. This mostly involves telling whoever called us that something failed by exiting with a return code > 127. 
+* Add a native suspend-hybrid method. This involves scheduling a wakeup call through the RTC for 900 seconds in the future, going to sleep, and hibernating at wakeup if we woke up 900 seconds later.  If the hibernate fails for any reason we just go back to suspend. 
+* We can profile the entire suspend/resume process to see how much time is taken by each of the hooks.  See the documentation for PM_PROFILE for more information. 
+
+## 1.2.6.1 Release Announcement
+
+* Readd smart-kernel-video support for non-KMS i915 Intel framebuffer drivers. 
+
+## 1.2.6 Release Announcement
+
+* Make KMS detection more accurate.  The original method we were using tripped whenever a framebuffer was being used, which is obviously not the bast way to detect KMS.  The new code is uglier, but should accurately identify when KMS is being used with Intel, Radeon, or Noveau - based KMS drivers are active. Hopefully the framebuffer authors will eventually settle on a sysfs knob we can look at so we do not have to use driver-specific methods. 
+* Fix several typos on the documentation. 
+* Make boolean testing consistent across the shell scripts. 
+
+## 1.2.5 Release Announcement
+
+* If running on a system that is using Kernel Mode Setting, we will refuse to handle any video quirks passed to us by HAL, and we will not chvt to an empty console. 
+* Fix a longstanding bug in tuning scheduler powersaving knobs on SMT systems. 
+
+## 1.2.4 Release Announcement
+
+* We now provide the location of the configuration files as a pkg-config variable, and fixed a bug that kept pkg-config from functioning correctly. Other packages should now be able to intergrate with pm-utils much easier. 
+* Fixed a bug that caused module dependencies to not be traced when unloading modules. 
+* pm-utils now knows how check for running services on Gentoo. 
+* If we get quirks from HAL, we now echo them into the log. 
+
+## 1.1.3 Release Announcement
+
+* Fixed a bug that caused module dependencies to not be traced when unloading modules. 
+
+## 1.2.3 Release Announcement
+
+* Removed 55battery, 50ntpd, and 65alsa hooks.  They worked around problems which have been resolved for a couple of years now, or which should be worked around elsewhere to have the intended effect.  See the NEWS file and/or the changelog for more info. 
+* pkg-config contains variables which point directly at the location to install hooks. 
+* We always set the ACPI S3 flags on suspend now.  This fixes some instances where suspend works once and then fails.  We ignore the parameter passed to the kernel -- please consider creating an .fdi file that covers your system and posting it to the pm-utils or HAL mailing list if you rely on the kernel flag. 
+
+## 1.2.2.1 Release Announcement
+
+* One-liner to make 00auto-quirk work when there is more than one quirk.  Thanks again, Michael Biebl. 
+
+## 1.2.2 Release Announcement
+
+* Numerous bugfixes to actually make all the stuff that should have worked in 1.2.1 really work. Thanks, Michael Biebl. 
+   * Don't try to make a release and soothe an infant at the same time. 
+* Document the 1.2.1 updates in the pm-action manpage. 
+* Save autogenerated .fdi file to /etc/hal/fdi/information/99local-pm-utils-quirks.fdi instead of in /tmp. 
+
+## 1.2.1 Release Announcement
+
+* Same bugfixes as in 1.1.2.5 
+* Sleep modules are stackable and have finegrained method detection.  For instance, if you like s2disk but not s2ram, you can remove the s2ram binary and pm-utils will automatically fall back to using kernel methods for suspend/resume. 
+* pm-utils will now try to pull the appropriate quirks out of HAL (if installed) and if you call pm-suspend and friends with no parameters.  You can also force this behaviour with the  --auto-quirks parameter. 
+* pm-utils has support for saving quirks as a HAL FDI file.  If called with --store-quirks-as-fdi, an .fdi file specific to the machine and quirks passed on the command line will be written to /tmp/pm-utils-created.fdi. 
+
+## 1.1.2.5 Release Announcement
+
+* pm-utils now handles pci state saving/restoring as part of video quirk handling.  How we missed it for this long is beyond me. 
+* Fixed a logging bug that aborted displaying help text after the first quirk that had help text. 
+
+## 1.2.0 Release Announcement
+
+* The core hook-running machinery will now abort running hooks of one fails, and the front-end scripts will return a failure error code if hook-running was aborted. 
+* We have guidelines for hook ordering conventions for suspend/resume hooks.  The hooks packaged with pm-utils have been reordered to conform to these conventions. See pm/HOWTO.hooks for more information. 
+* We handle suspend-hybrid correctly.  The two hooks that care about the difference between suspend, hibernate, and hybrid suspend have been updated to take hybrid suspend into account -- the remainder of the hooks required no modification. 
+* Some changes have been made to the core pm-utils code to make pm-powersave more useful.  Specifically, it is now possible to have different settings loaded depending on whether or not you are using using pm-action to initiate a suspend/resume or you are using pm-powersave to enable or disable power saving functionality, and sleep and power hooks will not interfere with each other when using the functionality provided by ${PM_FUNCTIONS}.  The experimental powersave-hooks branch in the main git repository contains some example powersave hooks that use this functionality. 
+
+## 1.1.2.4 Release Announcement
+
+* Intel i915 kernel modesetting in Linux 2.6.26 did not render all video quirks obsolete, alas.  Certain systems still require --quirk-s3-mode and/or --quirk-s3-bios to resume with full functionality. This update keeps those quirks if they are present when using the i915 kernel modesetting driver. 
+
+## 1.1.2.3 Release Announcement
+
+* Fix a bug in parsing the kernel revision when testing to see if the in-kernel intel video driver requires userspace quirk handling. 
+
+## 1.1.2.2 Release Announcement
+
+* Fix a bug in the fix for the previous bug noticed by Michael Biebl that prevents pm-utils from saving commandline parameters correctly. 
+* Clean up $STORAGEDIR when pm-utils launches instead of when it ends.  This improves debugging. 
+
+## 1.1.2.1 Release Announcement
+
+* Fix a bug noticed by Michael Biebl that prevents pm-utils from saving commandline parameters correctly. 
+* Return $NA instead of 1 when we are running on a system that 98-smart-kernel-video does not recognize. 
+* Close a security hole noticed by Michael Biebl that might allow arbitrary file removal.  We now handle commandline parameters using a single file instead of lots of smaller ones. 
+
+## 1.1.2 Release Announcement
+
+* Manpage generation has been rewritten to use xmlto instead of the older SGML utilities. 
+* Michael Biebl of the Debian project has graciously donated their pm-utils manpages. We now have manpages for pm-action and friends. 
+* Dan Nicholson committed automake cleanups for the new manpages. 
+* If you are running pm-utils on a system that has a video card with a driver that is smart enough to handle quirks by itself, pm-utils will no longer attempt to run its video quirks.  Thanks, Matthew Garrett. 
+* README and HOWTO files will actually be installed from the dist tarballs now. 
+* A bug involving vbe mode restoration has been fixed. This fix was actually comitted in the pm-utils 1.1.1 release, but no notice was made in the release announcement. 
+
+## 1.1.0 Release announcement
+
+* All the scripts that make up pm-utils have been rewritten to conform to POSIX and the Single Unix Specification. Any remaining bashisms or GNUisms are bugs. If you encounter a script that is not POSIX and SuS compliant, please file a bug. 
+* There have been several changes to the way hooks are detected and invoked. If you have a custom-written hook that breaks upon installation of this package, you may have to perform some minor fixups to make it work again. All the hooks that are supplied with pm-utils have been updated to take full advantage of these changes, so use them as examples. For more detailed information, see pm/HOWTO.hooks. 
+* pm-utils now has a modular sleep backend. There are currently plugins for the default kernel sleep methods, the uswsusp tools (s2ram/s2disk/s2both), and rudimentary support for tuxonice. You can switch between the sleep modules by setting the SLEEP_MODULE environment variable to the desired sleep module. If you want to write a sleep module, see pm/HOWTO.modules. 
+* pm-utils has a greatly expanded set of debugging features: 
+   * If the environment variable PM_DEBUG is set to true, the pm-suspend.log will contain a full trace of all the actions taken by pm-utils. 
+   * The HOOK_BLACKLIST environment variable allows you to disable a hook without having to modify it. 
+   * The ADD_PARAMETERS and DROP_PARAMETERS environment variables allow you to modify the parameters passed by calling programs (such as HAL). 
+   * More complete logging, including logging the commandline parameters, which hooks ran and did not run (and the reasons why), and logging the status codes of executed hooks. 
+* pm-utils has pkg-config support. This makes it much easier for other programs to rely on pm-utils for all their suspend/resume quirk handling needs. 
+In addition to these major changes, there have been a whole slew of minor changes and bugfixes. Most of the pm-utils related bugs that the distributions have encountered have been fixed in this release. Please see the [[ChangeLog|http://cgit.freedesktop.org/pm-utils/log/]] for more details. 
+
+There have also been major changes in the pm-utils project 
+
+* Richard Hughes assumed maintainership of the project after a long period of inactivity by Peter Jones. Richard then transitioned the project from using CVS to using git as the version control system, and opened the floor to several new contributors. 
+* Victor Lowther rewrote all the scripts to be POSIX compliant, added the modular sleep backends, added the new debugging features, and did lots of code cleanups and bug fixes. If you find a bug, it is probably his fault. 
+* Michael Biebl improved the PMU support and caught most of the bugs that Victor did not catch.  
+* Till Maas improved the locking code through clever use of noclobber. 
+* Dan Nicholson cleaned up our use of autotools, and added pkg-config support. 
+* pm-utils now uses git as it source-control repository. You can browse the code at [[http://cgit.freedesktop.org/pm-utils/|http://cgit.freedesktop.org/pm-utils/]] 
